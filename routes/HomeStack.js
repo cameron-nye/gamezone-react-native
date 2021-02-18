@@ -1,21 +1,34 @@
-import { createStackNavigator } from "react-navigation-stack";
-import Home from '../screens/Home'
-import ReviewDetails from '../screens/ReviewDetails'
-import About from '../screens/About'
-import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack"
+import Home from "../screens/Home"
+import ReviewDetails from "../screens/ReviewDetails"
+import About from "../screens/About"
+import { createAppContainer } from "react-navigation"
 
 const screens = {
-  Home: {
-    screen: Home
-  },
-  ReviewDetails: {
-    screen: ReviewDetails
-  },
-  About: {
-    screen: About
-  }
+	Home: {
+		screen: Home,
+		navigationOptions: {
+			title: "GameZone",
+		}
+	},
+	ReviewDetails: {
+		screen: ReviewDetails,
+		navigationOptions: {
+			title: "Review Details"
+		}
+	},
+	About: {
+		screen: About
+	}
 }
 
-const HomeStack = createStackNavigator(screens)
+const HomeStack = createStackNavigator(screens, {
+	defaultNavigationOptions: {
+    headerTintColor: '#212121',
+		headerStyle: {
+			backgroundColor: "aliceblue"
+		}
+	}
+})
 
 export default createAppContainer(HomeStack)
