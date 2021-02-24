@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/Global"
 import { Formik } from "formik"
 import { TextInput } from "react-native-gesture-handler"
 
-const ReviewForm = () => {
+const ReviewForm = ({addReview}) => {
 	return (
 		<View style={globalStyles.container}>
 			<Formik
@@ -13,8 +13,9 @@ const ReviewForm = () => {
 					body: "",
 					rating: ""
 				}}
-				onSubmit={values => {
-					console.log(values)
+				onSubmit={(values, actions) => {
+					addReview(values)
+          actions.resetForm()
 				}}
 			>
 				{props => (
@@ -22,20 +23,20 @@ const ReviewForm = () => {
 						<TextInput
 							style={globalStyles.input}
 							placeholder="Title"
-							onChange={props.handleChange("title")}
+							onChangeText={props.handleChange("title")}
 							value={props.values.title}
 						/>
 						<TextInput
 							style={globalStyles.input}
 							placeholder="Description"
-							onChange={props.handleChange("body")}
+							onChangeText={props.handleChange("body")}
 							value={props.values.body}
 							multiline
 						/>
 						<TextInput
 							style={globalStyles.input}
 							placeholder="Rating (1-5)"
-							onChange={props.handleChange("rating")}
+							onChangeText={props.handleChange("rating")}
 							value={props.values.rating}
 							keyboardType="numeric"
 						/>
