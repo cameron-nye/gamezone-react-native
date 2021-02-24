@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, StyleSheet, Text, View } from 'react-native'
 
 const Card = (props) => {
   return (
-    <View style={styles.card}>
+    <ImageBackground source={require('../assets/game_bg.png')} style={styles.card}>
       <View style={styles.cardContent}>{props.children}</View>
-    </View>
+    </ImageBackground>
   )
 }
 
