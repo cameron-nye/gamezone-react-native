@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import { StyleSheet, Modal, Text, View, Keyboard } from "react-native"
-import { FlatList, TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler"
+import { StyleSheet, Modal, Text, View, Keyboard, FlatList, TouchableOpacity, TouchableWithoutFeedback } from "react-native"
 import { MaterialIcons } from "@expo/vector-icons"
 import { globalStyles } from "../styles/Global"
 import Card from "../shared/Card"
@@ -17,7 +16,7 @@ const Home = ({ navigation }) => {
 	const { navigate } = navigation
 
 	const addReview = review => {
-		review.key = Math.random().toString()
+		review.key = reviews.length + 1
 		setReviews(prevState => [ ...prevState, review ])
 		setModalOpen(false)
 	}
