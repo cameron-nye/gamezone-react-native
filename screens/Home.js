@@ -4,14 +4,14 @@ import { FlatList, TouchableOpacity } from "react-native-gesture-handler"
 import { MaterialIcons } from "@expo/vector-icons"
 import { globalStyles } from "../styles/Global"
 import Card from "../shared/Card"
-import { Inter_200ExtraLight } from "@expo-google-fonts/inter"
+import ReviewForm from "./ReviewForm"
 
 const Home = ({ navigation }) => {
 	const [ modalOpen, setModalOpen ] = useState(false)
 	const [ reviews, setReviews ] = useState([
-		{ title: "Zelda, Breath of Fresh Air", rating: 5, body: "lorem ipsum", key: "1" },
-		{ title: "Gotta Catch Them All (again)", rating: 4, body: "lorem ipsum", key: "2" },
-		{ title: 'Not So "Final" Fantasy', rating: 3, body: "lorem ipsum", key: "3" }
+		{ title: "League of Legends", rating: 4.5, body: "lorem ipsum", key: "4" },
+		{ title: "Destiny", rating: 5, body: "lorem ipsum", key: "2" },
+		{ title: 'The Last of Us', rating: 5, body: "lorem ipsum", key: "3" }
 	])
 	const { navigate } = navigation
 
@@ -20,7 +20,7 @@ const Home = ({ navigation }) => {
 			<Modal visible={modalOpen} animationType="slide" style={styles.modalToggle}>
 				<View style={styles.modalContent}>
 					<MaterialIcons name="close" size={24} onPress={() => setModalOpen(false)} style={{...styles.modalToggle, ...styles.modalClose}} />
-					<Text>Hello, modal</Text>
+					<ReviewForm/>
 				</View>
 			</Modal>
 			<MaterialIcons name="add" size={24} onPress={() => setModalOpen(true)} style={styles.modalToggle} />
@@ -41,7 +41,6 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
 	modalContent: {
     flex: 1,
-    padding: 20,
   },
 	modalToggle: {
 		marginBottom: 10,
