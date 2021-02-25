@@ -3,8 +3,18 @@ import { StyleSheet, Text, View, Button } from "react-native"
 import { globalStyles } from "../styles/Global"
 import { Formik } from "formik"
 import { TextInput } from "react-native-gesture-handler"
+import * as yup from "yup"
 
-const ReviewForm = ({addReview}) => {
+const reviewSchema = yup.object({
+	title: yup.string().required().min(4),
+	body: yup.string().required().min(8),
+	rating: yup
+		.string()
+		.required()
+		.test("isNum1-5", "Rating must be a number (1-5)", val => parseInt(val) < 6 && parseInt(val) > 0)
+})
+
+const ReviewForm = ({ addReview }) => {
 	return (
 		<View style={globalStyles.container}>
 			<Formik
@@ -15,8 +25,9 @@ const ReviewForm = ({addReview}) => {
 				}}
 				onSubmit={(values, actions) => {
 					addReview(values)
-          actions.resetForm()
+					actions.resetForm()
 				}}
+        validationSchema={reviewSchema}
 			>
 				{props => (
 					<View>
