@@ -47,6 +47,7 @@ const ReviewForm = ({ addReview }) => {
 							value={props.values.body}
 							onBlur={props.handleBlur("body")}
 							multiline
+              minHeight={100}
 						/>
 						<Text style={globalStyles.errorText}>{props.touched.body && props.errors.body}</Text>
 						<TextInput
