@@ -27,7 +27,7 @@ const ReviewForm = ({ addReview }) => {
 					addReview(values)
 					actions.resetForm()
 				}}
-        validationSchema={reviewSchema}
+				validationSchema={reviewSchema}
 			>
 				{props => (
 					<View>
@@ -36,21 +36,27 @@ const ReviewForm = ({ addReview }) => {
 							placeholder="Title"
 							onChangeText={props.handleChange("title")}
 							value={props.values.title}
+							onBlur={props.handleBlur("title")}
 						/>
+						<Text style={globalStyles.errorText}>{props.touched.title && props.errors.title}</Text>
 						<TextInput
 							style={globalStyles.input}
 							placeholder="Description"
 							onChangeText={props.handleChange("body")}
 							value={props.values.body}
+							onBlur={props.handleBlur("body")}
 							multiline
 						/>
+						<Text style={globalStyles.errorText}>{props.touched.body && props.errors.body}</Text>
 						<TextInput
 							style={globalStyles.input}
 							placeholder="Rating (1-5)"
 							onChangeText={props.handleChange("rating")}
 							value={props.values.rating}
 							keyboardType="numeric"
+							onBlur={props.handleBlur("rating")}
 						/>
+						<Text style={globalStyles.errorText}>{props.touched.rating && props.errors.rating}</Text>
 						<Button title="Submit" color="limegreen" onPress={props.handleSubmit} />
 					</View>
 				)}
