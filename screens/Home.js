@@ -10,7 +10,7 @@ const Home = ({ navigation }) => {
 	const [ reviews, setReviews ] = useState([
 		{ title: "Destiny", rating: 5, body: "lorem ipsum", key: "1" },
 		{ title: "The Last of Us", rating: 5, body: "lorem ipsum", key: "2" },
-		{ title: "League of Legends", rating: 4.5, body: "lorem ipsum", key: "3" }
+		{ title: "League of Legends", rating: 4, body: "lorem ipsum", key: "3" }
 	])
 
 	const { navigate } = navigation
